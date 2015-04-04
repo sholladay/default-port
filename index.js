@@ -11,7 +11,28 @@
 var pkg = require('./package.json');
 
 function app(protocol) {
-    return app[protocol];
+
+    var key, result;
+
+    if (typeof protocol === 'function') {
+        protocol = protocol();
+    }
+    // Accept a port and return a protocol,
+    if (typeof protocol === 'number') {
+        for (key in app) {
+            if (Object.prototype.hasOwnProperty.call(app, key)) {
+                if (app[key] === protocol) {
+                    result = key;
+                    break;
+                }
+            }
+        }
+    }
+    else {
+        result = app[protocol];
+    }
+
+    return result;
 }
 
 // Hypertext Transfer Protocol
