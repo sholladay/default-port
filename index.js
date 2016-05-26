@@ -3,7 +3,12 @@
 function defaultPort(protocol) {
 
     if (typeof protocol !== 'number') {
-        return defaultPort[protocol];
+
+        if (Object.prototype.hasOwnProperty.call(defaultPort, protocol)) {
+            return defaultPort[protocol];
+        }
+
+        throw new Error('Unknown protocol.');
     }
 
     for (const key in defaultPort) {
@@ -13,6 +18,8 @@ function defaultPort(protocol) {
             }
         }
     }
+
+    throw new Error('Unknown port number.');
 }
 
 // Hypertext Transfer Protocol
