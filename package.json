@@ -1,6 +1,6 @@
 {
   "name": "default-port",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "description": "Get the default port for a protocol.",
   "homepage": "https://github.com/sholladay/default-port",
   "main": "index.js",
